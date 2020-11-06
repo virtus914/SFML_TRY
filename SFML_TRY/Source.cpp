@@ -1,0 +1,249 @@
+#include <SFML/Graphics.hpp>
+
+
+
+
+int main()
+{
+
+	  sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+	 window.setFramerateLimit(1);
+
+
+	// run the program as long as the window is open
+	 while (window.isOpen())
+	 {
+		 // check all the window's events that were triggered since the last iteration of the loop
+		 sf::Event event;
+		 while (window.pollEvent(event))
+		 {
+			 // "close requested" event: we close the window
+			 if (event.type == sf::Event::Closed)
+				 window.close();
+		 }
+
+		 // clear the window with black color
+		 window.clear(sf::Color::Black);
+
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 ////////////////////////////////////////DOT////////////////////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		     void dot(); {
+			 sf::Vertex vertex1(sf::Vector2f(10.f, 50.f), sf::Color::Red, sf::Vector2f(100.f, 100.f));
+			 sf::VertexArray dot(sf::Points, 1);
+
+
+
+			 dot[0].position = sf::Vector2f(50, 30);
+			 dot[0].color = sf::Color::Green;
+
+
+			 window.draw(dot);
+		 }
+
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 ////////////////////////////////////////LINE////////////////////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			 void line(); {
+				 sf::Vertex vertex2(sf::Vector2f(10.f, 50.f), sf::Color::Red, sf::Vector2f(100.f, 100.f));
+				 sf::VertexArray line(sf::Lines, 2);
+
+
+
+				 line[0].position = sf::Vector2f(100, 50);
+				 line[1].position = sf::Vector2f(200, 50);
+				 line[0].color = sf::Color::Green;
+				 line[1].color = sf::Color::Green;
+
+
+				 window.draw(line);
+			 }
+
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////SQUARE////////////////////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			 void square(); {
+
+				 sf::Vertex vertex3(sf::Vector2f(10.f, 50.f), sf::Color::Red, sf::Vector2f(100.f, 100.f));
+
+				 sf::VertexArray square(sf::Quads, 4);
+
+				 square[0].position = sf::Vector2<float>(100, 100);
+				 square[1].position = sf::Vector2<float>(200, 100);
+				 square[2].position = sf::Vector2<float>(200, 200);
+				 square[3].position = sf::Vector2<float>(100, 200);
+
+				 square[0].color = sf::Color::Green;
+				 square[1].color = sf::Color::Green;
+				 square[2].color = sf::Color::Green;
+				 square[3].color = sf::Color::Green;
+
+				 window.draw(square);
+
+			 }
+
+
+
+
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////TRIANLGE////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			 void trianle(); {
+
+				 sf::Vertex vertex(sf::Vector2f(10.f, 50.f), sf::Color::Red, sf::Vector2f(100.f, 100.f));
+
+				 // create an array of 3 vertices that define a triangle primitive
+				 sf::VertexArray triangle(sf::Triangles, 3);
+
+				 // define the position of the triangle's points
+				 triangle[0].position = sf::Vector2f(50.f, 40.f);
+				 triangle[1].position = sf::Vector2f(10.f, 90.f);
+				 triangle[2].position = sf::Vector2f(90.f, 90.f);
+
+
+				 // define the color of the triangle's points
+				 triangle[0].color = sf::Color::Green;
+				 triangle[1].color = sf::Color::Green;
+				 triangle[2].color = sf::Color::Green;
+
+				 // no texture coordinates here, we'll see that later
+
+				 window.draw(triangle);
+			 }
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////RECTANGLE////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+			 void rectangle(); {
+
+				 sf::Vertex vertex5(sf::Vector2f(10.f, 50.f), sf::Color::Red, sf::Vector2f(100.f, 100.f));
+
+				 sf::VertexArray rectangle(sf::Quads, 4);
+
+				 rectangle[0].position = sf::Vector2<float>(10, 300);
+				 rectangle[1].position = sf::Vector2<float>(300, 300);
+				 rectangle[2].position = sf::Vector2<float>(300, 450);
+				 rectangle[3].position = sf::Vector2<float>(10, 450);
+
+
+				 rectangle[0].color = sf::Color::Green;
+				 rectangle[1].color = sf::Color::Green;
+				 rectangle[2].color = sf::Color::Green;
+				 rectangle[3].color = sf::Color::Green;
+
+				 window.draw(rectangle);
+
+
+			 }
+
+		 //////////////////////////////////////////////////////////////////////////////////////////////
+		 /////////////////////////////CIRCLE///////////////////////////////////////////////////////////
+		 //////////////////////////////////////////////////////////////////////////////////////////////
+
+			 void circle(); {
+				 std::vector<sf::CircleShape> myvector;
+
+				 // add 10 circles
+
+				 //sf::VertexArray shape(sf::CircleShape);
+				 sf::CircleShape shape(45);
+				 //sf::circleshape is drived class of sf::Vertex array
+				 // draw a circle every 100 pixels
+				 shape.setPosition(5, 100);
+				 shape.setFillColor(sf::Color(100, 250, 50));
+
+				 myvector.push_back(shape);
+
+
+
+				 // iterate through vector
+				 for (std::vector<sf::CircleShape>::iterator it = myvector.begin(); it != myvector.end(); ++it)
+				 {
+					 // draw all circles
+					 window.draw(*it);
+				 }
+
+			 }
+
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////ARC////////////////////////////////////////////////////////////////////
+		 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			 void arc(); {
+
+				 sf::Vertex vertex7(sf::Vector2f(10.f, 50.f), sf::Color::Red, sf::Vector2f(100.f, 100.f));
+
+				 sf::VertexArray arc(sf::Lines, 100);
+
+
+
+				 int xp = 300;
+				 int yp = 100;
+
+				 for (int i = 0; i < 50; i++){
+
+					 arc[i].position = sf::Vector2<float>(xp, yp);
+					 xp++;
+					 xp++;
+					 xp++;
+
+					 yp++;
+
+					 arc[i].color = sf::Color::Green;
+				 }
+
+				 for (int j = 50; j < 100; j++){
+					 arc[j].position = sf::Vector2<float>(xp, yp);
+					 xp++;
+					 xp++;
+					 xp++;
+					 xp++;
+
+					 yp--;
+					 arc[j].color = sf::Color::Green;
+				 }
+
+				 window.draw(arc);
+
+
+			 }
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////ellipse////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
+
+			 void ellipse(); {
+
+				 sf::CircleShape ellipse(100.f);
+
+				 //sf::circleshape is drived class of sf::Vertex array
+
+				 ellipse.setFillColor(sf::Color::Green);
+				 ellipse.setPosition(400, 400);
+				 ellipse.setScale(3, 1);
+				 ellipse.setRadius(50);
+
+
+
+				 window.draw(ellipse);
+
+			 }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		//display all shapes on this function
+		window.display();
+		
+	}
+
+	return 0;
+}
